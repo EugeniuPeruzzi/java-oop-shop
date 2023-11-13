@@ -50,10 +50,14 @@ public class Prodotto {
     	return codice + "-" + nome;
     }
     
+    public String getCodeFormat() {
+    	return String.format("%08d", getCodice());
+    }
+    
 
     // Metodi Setter
-    public void setCodice(int codice) {
-        this.codice = rnd.nextInt(1, Integer.MAX_VALUE);
+    private void setCodice(int codice) {
+        this.codice = rnd.nextInt(1, 1000);
     }
 
     public void setNome(String nome) {
@@ -81,12 +85,12 @@ public class Prodotto {
 				+ "codice: " + getCodice() + "\n"
 				+ "nome: " + getNome() + "\n"
 				+ "descrizione: " + getDescrizione() + "\n"
-				+ "prezzo: " + getPrezzo() + "\n"
-				+ "iva: " + getIva() + "\n"
-				+ "iva: " + getPrezzoIvato() + "\n"
-				+ "iva: " + getCodeName() + "\n";
+				+ "prezzo: " + getPrezzo() + "$\n"
+				+ "iva: " + getIva() + "%\n"
+				+ "prezzo ivato: " + getPrezzoIvato() + "$\n"
+				+ "codice piu nome: " + getCodeName() + "\n"
+				+ "codice formatato: " + getCodeFormat() + "\n";
 
-		
 
 	}
 }
