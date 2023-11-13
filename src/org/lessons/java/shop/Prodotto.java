@@ -1,21 +1,25 @@
 package org.lessons.java.shop;
 
+import java.util.Random;
+
 public class Prodotto {
     private int codice;
     private String nome;
     private String descrizione;
-    private double prezzo;
-    private double iva;
+    private float prezzo;
+    private float iva;
 
     // Costruttore
-    public Prodotto(int codice, String nome, String descrizione, double prezzo, double iva) {
+    public Prodotto(String nome, String descrizione, float prezzo, float iva) {
         setCodice(codice);
         setNome(nome);
         setDescrizione(descrizione);
         setPrezzo(prezzo);
-        setIva(prezzo);
+        setIva(iva);
 
     }
+    
+    Random rnd = new Random();
 
     // Metodi Getter
     public int getCodice() {
@@ -30,17 +34,26 @@ public class Prodotto {
         return descrizione;
     }
 
-    public double getPrezzo() {
+    public float getPrezzo() {
         return prezzo;
     }
 
-    public double getIva() {
+    public float getIva() {
         return iva;
     }
+    
+    public float getPrezzoIvato() {
+    	return prezzo+(prezzo * iva / 100);
+    }
+    
+    public String getCodeName() {
+    	return codice + "-" + nome;
+    }
+    
 
     // Metodi Setter
     public void setCodice(int codice) {
-        this.codice = codice;
+        this.codice = rnd.nextInt(1, Integer.MAX_VALUE);
     }
 
     public void setNome(String nome) {
@@ -51,12 +64,30 @@ public class Prodotto {
         this.descrizione = descrizione;
     }
 
-    public void setPrezzo(double prezzo) {
+    public void setPrezzo(float prezzo) {
         this.prezzo = prezzo;
     }
 
-    public void setIva(double iva) {
+    public void setIva(float iva) {
         this.iva = iva;
     }
+    
+    
+    
+	@Override
+	public String toString() {
+		
+		return "Studente:\n"
+				+ "codice: " + getCodice() + "\n"
+				+ "nome: " + getNome() + "\n"
+				+ "descrizione: " + getDescrizione() + "\n"
+				+ "prezzo: " + getPrezzo() + "\n"
+				+ "iva: " + getIva() + "\n"
+				+ "iva: " + getPrezzoIvato() + "\n"
+				+ "iva: " + getCodeName() + "\n";
+
+		
+
+	}
 }
 
